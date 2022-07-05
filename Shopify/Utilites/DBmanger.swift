@@ -42,6 +42,7 @@ extension DBmanger {
         do {
             try managedContext.save()
             print("data Saved in cart")
+            print("test")
         }
         catch{
             print("error in saving item in cart ")
