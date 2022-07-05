@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  Shopify
 //
 //  Created by Mostafa Elbadawy on 05/07/2022.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var firstNameTF: UITextField!
+    @IBOutlet weak var lastNameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBAction func loginBtn(_ sender: UIButton) {
+    @IBOutlet weak var confirmPasswordTF: UITextField!
+    @IBAction func signUpBtn(_ sender: UIButton) {
     }
-
-    @IBAction func goTosignUpVCBtn(_ sender: UIButton) {
+    @IBAction func goToLoginVCBtn(_ sender: UIButton) {
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-   print("asdasd")
-        print("sdfasfgasfg")
+
         // Do any additional setup after loading the view.
     }
     
