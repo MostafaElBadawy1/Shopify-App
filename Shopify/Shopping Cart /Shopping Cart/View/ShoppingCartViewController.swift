@@ -7,7 +7,14 @@
 
 import UIKit
 
-class ShoppingCartViewController: UIViewController {
+class ShoppingCartViewController: UIViewController , CartSelection {
+    func addProductToCart(product: CartItem, atIndex: Int) {
+        cart[atIndex] = product
+
+                calculateTotal()
+    }
+    
+   
 
   
     @IBOutlet weak var totalCost: UILabel!
@@ -20,20 +27,25 @@ class ShoppingCartViewController: UIViewController {
 
     var cart = [CartItem]()
     
-    
+    var totalprize : Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        myTableView.reloadData()
-        cart = db.fetchDataCart(appDelegate: appDelegate)
-        
+        calculateTotal()
+
         
         myTableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle: nil), forCellReuseIdentifier: "shoppingcart")
         
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        myTableView.reloadData()
+        cart = db.fetchDataCart(appDelegate: appDelegate)
+        totalCost.text = "\(totalprize)"
+    }
 
 
     @IBAction func ProcessedToCheckOut(_ sender: Any) {
@@ -43,20 +55,45 @@ class ShoppingCartViewController: UIViewController {
 
 
 
-extension ShoppingCartViewController : UITableViewDelegate {}
+extension ShoppingCartViewController : UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] Action, view, completionHandler in
+            db.delete(cartItem: cart[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
+            myTableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+    }
+
 
 
 extension ShoppingCartViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return cart.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingcart", for: indexPath) as? ShoppingCartTableViewCell
-        
-        cell?.brandName.text = "ahmed brand name and yellow"
-        
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingcart", for: indexPath) as! ShoppingCartTableViewCell
+        /*
+        cell.brandName.text = cart[indexPath.row].productTitle
+        cell.minCost = cart[indexPath.row].price
+        print(cell.minCost as Any)
+        self.totalprize += cell.totalCost
+        print("\(totalprize)")
+         
+         */
+        cell.brandName.text = cart[indexPath.row].productTitle
+         cell.product = cart[indexPath.row]
+        cell.brandCost.text = "\(cell.product.price)"
+         cell.productIndex = indexPath.row
+         cell.cartSelectionDelegate = self
+         cell.brandCost.text =  "\(cart[indexPath.row].price)"
+         
+         
+         
+        return cell
         
     }
     
@@ -67,4 +104,35 @@ extension ShoppingCartViewController : UITableViewDataSource {
     
     
     
+}
+
+
+
+
+extension ShoppingCartViewController : DeletionDelegate {
+    func deleteMovieAtIndexPath(indexPath: IndexPath) {
+        cart.remove(at: indexPath.row)
+        DispatchQueue.main.async {
+            self.myTableView.reloadData()
+        }
+    }
+    
+    
+    
+    
+    
+     func calculateTotal()
+         {
+             var totalValue = 0.0
+             for objProduct in cart {
+
+                 totalValue += objProduct.price
+                 
+             }
+             self.totalCost.text = "\(totalValue) $"
+
+    
+    
+}
+
 }
