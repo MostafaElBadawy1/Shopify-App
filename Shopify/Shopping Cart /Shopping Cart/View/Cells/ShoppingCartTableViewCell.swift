@@ -11,25 +11,29 @@ import UIKit
 
 protocol CartSelection {
     
-    func addProductToCart(product : CartItem, atIndex : Int)
+    func addProductTonewCart(product : CartItem, atIndex : Int)
 }
 
 
 class ShoppingCartTableViewCell: UITableViewCell {
+    
     
     @IBOutlet weak var brandImage: UIImageView!
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var brandCost: UILabel!
     @IBOutlet weak var numberOfBrand: UILabel!
     
-    
+    // cart
     var product:CartItem!
-    private var counterValue: Int = 1 {
-        didSet{
-        numberOfBrand.text = "\(counterValue)"
-        }
-    }
+    // new cart
+    var product2 : CartItem!
     
+    
+    
+
+     
+    private var counterValue : Int = 1
+    var countOfArray = 0
     var productIndex = 0
     var cartSelectionDelegate: CartSelection?
 
@@ -45,8 +49,13 @@ class ShoppingCartTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-
         // Configure the view for the selected state
+        print("_________________________________________")
+        print("product in cart : \((product?.price) ?? 0.0 )")
+        print("product in newcart : \((product2?.price) ?? 0.0)")
+        print("_________________________________________")
+
+        
     }
     
     
@@ -55,36 +64,33 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     @IBAction func decreaseOfBrand(_ sender: Any) {
         
-       /* self.numBrand-=1;
-        print("decrease \(numBrand)")
-*/
+ 
         
         
         if(counterValue != 1){
                    counterValue -= 1;
+            self.numberOfBrand.text = "\(counterValue)"
+            self.brandCost.text = String(product.price * Double(counterValue))
+            cartSelectionDelegate?.addProductTonewCart(product: product, atIndex: productIndex)
+
                }
-        self.numberOfBrand.text = "\(counterValue)"
-         product.price = product.price - (product.price * Double(counterValue))
-         print(product.price)
-        cartSelectionDelegate?.addProductToCart(product: product, atIndex: productIndex)
-             
-        
-        
-        
+    
     }
+    
     @IBAction func increaseOfBrand(_ sender: Any) {
-      //  self.numBrand+=1;
-     //   print("increaese \(numBrand)")
-        
-        
-        
+  
+        if (counterValue >= 6) {
+            print("error")
+        }else {
                 counterValue += 1;
                self.numberOfBrand.text = "\(counterValue)"
-                product.price = product.price * Double(counterValue)
-                print(product.price)
-               cartSelectionDelegate?.addProductToCart(product: product, atIndex: productIndex)
+        self.brandCost.text = String( product.price * Double(counterValue))
+      
+               cartSelectionDelegate?.addProductTonewCart(product: product, atIndex: productIndex)
+        }
     }
 
+    
     }
     
 

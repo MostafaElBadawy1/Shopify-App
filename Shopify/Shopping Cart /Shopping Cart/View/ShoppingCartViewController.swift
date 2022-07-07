@@ -7,16 +7,9 @@
 
 import UIKit
 
-class ShoppingCartViewController: UIViewController , CartSelection {
-    func addProductToCart(product: CartItem, atIndex: Int) {
-        cart[atIndex] = product
+class ShoppingCartViewController: UIViewController {
 
-                calculateTotal()
-    }
-    
    
-
-  
     @IBOutlet weak var totalCost: UILabel!
     @IBOutlet weak var myTableView: UITableView!
     
@@ -25,7 +18,12 @@ class ShoppingCartViewController: UIViewController , CartSelection {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 
+    var customerID : Int? = 6261211300054
+    
     var cart = [CartItem]()
+    var newCart = [CartItem]()
+    
+    var total = [Double]()
     
     var totalprize : Double = 0.0
     
@@ -33,6 +31,9 @@ class ShoppingCartViewController: UIViewController , CartSelection {
         super.viewDidLoad()
 
         calculateTotal()
+        
+        myTableView.reloadData()
+        
 
         
         myTableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle: nil), forCellReuseIdentifier: "shoppingcart")
@@ -41,19 +42,51 @@ class ShoppingCartViewController: UIViewController , CartSelection {
     }
     
     
+    // MARK: - func will appear
+
     override func viewWillAppear(_ animated: Bool) {
+        calculateTotal()
         myTableView.reloadData()
         cart = db.fetchDataCart(appDelegate: appDelegate)
         totalCost.text = "\(totalprize)"
+        
+        for item in cart {
+            newCart.append(item)
+            calculateTotal()
+        }
+        totalCost.text = "\(totalprize)"
+
     }
 
+    // MARK: - func processed to check out
 
     @IBAction func ProcessedToCheckOut(_ sender: Any) {
+        
+        if (customerID != nil) {
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "chooseaddress") as! ChooseAddressViewController
+            vc.customerID = customerID
+            for item in newCart {
+                vc.cart.append(item)
+                
+            }
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+            
+            
+        }else {
+            // go to sign up to add user
+            
+        }
+        
+      
+        
     }
     
 }
 
 
+// MARK: - table view delegate
 
 extension ShoppingCartViewController : UITableViewDelegate {
     
@@ -68,30 +101,25 @@ extension ShoppingCartViewController : UITableViewDelegate {
     }
 
 
+// MARK: - table view data source
 
 extension ShoppingCartViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cart.count
+        return newCart.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingcart", for: indexPath) as! ShoppingCartTableViewCell
-        /*
-        cell.brandName.text = cart[indexPath.row].productTitle
-        cell.minCost = cart[indexPath.row].price
-        print(cell.minCost as Any)
-        self.totalprize += cell.totalCost
-        print("\(totalprize)")
-         
-         */
-        cell.brandName.text = cart[indexPath.row].productTitle
+     
+        cell.brandName.text = newCart[indexPath.row].productTitle
          cell.product = cart[indexPath.row]
-        cell.brandCost.text = "\(cell.product.price)"
+        cell.product2 = newCart[indexPath.row]
+            cell.brandCost.text = "\(cell.product.price)"
          cell.productIndex = indexPath.row
          cell.cartSelectionDelegate = self
-         cell.brandCost.text =  "\(cart[indexPath.row].price)"
-         
-         
+      //  cell.brandCost.text = "\(newCart[indexPath.row].price)"
+        
+        cell.countOfArray = newCart.count
          
         return cell
         
@@ -110,29 +138,47 @@ extension ShoppingCartViewController : UITableViewDataSource {
 
 
 extension ShoppingCartViewController : DeletionDelegate {
+    
+    
+    // MARK: - Func to delete product from cart
+
     func deleteMovieAtIndexPath(indexPath: IndexPath) {
         cart.remove(at: indexPath.row)
         DispatchQueue.main.async {
             self.myTableView.reloadData()
+
         }
     }
+
     
     
-    
-    
-    
+    // MARK: - Func to calculate total and print
+
      func calculateTotal()
          {
              var totalValue = 0.0
-             for objProduct in cart {
-
+             for objProduct in newCart {
                  totalValue += objProduct.price
-                 
              }
              self.totalCost.text = "\(totalValue) $"
 
-    
-    
 }
 
+
+}
+
+
+// MARK: - Func Add product to new cart
+
+
+extension ShoppingCartViewController : CartSelection {
+
+func addProductTonewCart(product: CartItem, atIndex: Int) {
+    //newCart[atIndex] = product
+    newCart.append(product)
+//        newCart[atIndex] = product
+    print("___________ new array _______")
+    print(newCart)
+            calculateTotal()
+}
 }
