@@ -134,7 +134,11 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LOE-By-8y9">
+ first
                                 <rect key="frame" x="0.0" y="98" width="414" height="663"/>
+=======
+                                <rect key="frame" x="0.0" y="54" width="414" height="707"/>
+ development
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chooseaddress" id="Asg-yc-Exp">
@@ -166,6 +170,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+ first
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdS-9w-h1t">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -184,6 +189,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+=======
+ development
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vC8-fh-2IX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -194,12 +201,19 @@
                             <constraint firstItem="vC8-fh-2IX" firstAttribute="bottom" secondItem="Lfk-tD-j1h" secondAttribute="bottom" constant="10" id="INd-yf-xSE"/>
                             <constraint firstItem="vC8-fh-2IX" firstAttribute="trailing" secondItem="Lfk-tD-j1h" secondAttribute="trailing" constant="10" id="Jhe-Bo-c1L"/>
                             <constraint firstItem="7oZ-f7-Tmm" firstAttribute="leading" secondItem="6zD-RK-Gjr" secondAttribute="trailing" constant="10" id="NbI-zO-PzG"/>
+ first
                             <constraint firstItem="kdS-9w-h1t" firstAttribute="trailing" secondItem="vC8-fh-2IX" secondAttribute="trailing" id="RTI-Gr-gcT"/>
                             <constraint firstItem="vC8-fh-2IX" firstAttribute="trailing" secondItem="7oZ-f7-Tmm" secondAttribute="trailing" constant="10" id="Zui-Ux-WGk"/>
                             <constraint firstItem="kdS-9w-h1t" firstAttribute="leading" secondItem="vC8-fh-2IX" secondAttribute="leading" id="bIj-GJ-10Z"/>
                             <constraint firstItem="Lfk-tD-j1h" firstAttribute="top" secondItem="7oZ-f7-Tmm" secondAttribute="bottom" constant="10" id="cYc-Nk-Snb"/>
                             <constraint firstItem="Lfk-tD-j1h" firstAttribute="top" secondItem="6zD-RK-Gjr" secondAttribute="bottom" constant="10" id="cen-8X-70o"/>
                             <constraint firstItem="kdS-9w-h1t" firstAttribute="top" secondItem="vC8-fh-2IX" secondAttribute="top" id="dcm-dT-E1F"/>
+=======
+                            <constraint firstItem="vC8-fh-2IX" firstAttribute="trailing" secondItem="7oZ-f7-Tmm" secondAttribute="trailing" constant="10" id="Zui-Ux-WGk"/>
+                            <constraint firstItem="Lfk-tD-j1h" firstAttribute="top" secondItem="7oZ-f7-Tmm" secondAttribute="bottom" constant="10" id="cYc-Nk-Snb"/>
+                            <constraint firstItem="Lfk-tD-j1h" firstAttribute="top" secondItem="6zD-RK-Gjr" secondAttribute="bottom" constant="10" id="cen-8X-70o"/>
+                            <constraint firstItem="LOE-By-8y9" firstAttribute="top" secondItem="vC8-fh-2IX" secondAttribute="top" constant="10" id="fAC-5d-oGC"/>
+ development
                             <constraint firstItem="LOE-By-8y9" firstAttribute="leading" secondItem="vC8-fh-2IX" secondAttribute="leading" id="gsg-g3-kO9"/>
                             <constraint firstItem="LOE-By-8y9" firstAttribute="top" secondItem="kdS-9w-h1t" secondAttribute="bottom" constant="10" id="w4K-jL-P4k"/>
                             <constraint firstItem="vC8-fh-2IX" firstAttribute="trailing" secondItem="LOE-By-8y9" secondAttribute="trailing" id="yvQ-tv-Z4G"/>
@@ -266,11 +280,15 @@
             <objects>
                 <viewController storyboardIdentifier="paymentOptions" id="PnW-G8-jsQ" customClass="PaymentOptionsViewController" customModule="Shopify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="93s-4z-dJZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgi-SJ-Icv">
+ first
                                 <rect key="frame" x="10" y="802" width="394" height="50"/>
+=======
+                                <rect key="frame" x="10" y="782" width="394" height="50"/>
+ development
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ofe-x7-wnw"/>
                                 </constraints>
@@ -285,6 +303,7 @@
                                     <action selector="ContinueToFinishOrder:" destination="PnW-G8-jsQ" eventType="touchUpInside" id="1p6-7y-c0g"/>
                                 </connections>
                             </button>
+ first
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="501-uH-yUB">
                                 <rect key="frame" x="0.0" y="98" width="414" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -337,6 +356,66 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ONline Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsM-lT-1hR">
+                                <rect key="frame" x="10" y="54" width="394" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.019607843829999999" green="0.01960784569" blue="0.019607843829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NbB-b1-o3s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY4-YD-3yf">
+                                <rect key="frame" x="10" y="114" width="45" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RQH-dB-riJ"/>
+                                    <constraint firstAttribute="width" constant="45" id="b0J-bp-Mh6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxJ-mc-jNC">
+                                <rect key="frame" x="65" y="114" width="339" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vzu-df-5N1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Payment Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsL-nG-NAu">
+                                <rect key="frame" x="10" y="174" width="394" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.019607843829999999" green="0.01960784569" blue="0.019607843829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PTd-TB-an6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vn-hf-5eb">
+                                <rect key="frame" x="10" y="234" width="45" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3Vj-00-XLZ"/>
+                                    <constraint firstAttribute="width" constant="45" id="g82-BY-dNR"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash On Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK7-LL-JnG">
+                                <rect key="frame" x="65" y="234" width="339" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mMj-Mc-ZLg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+ development
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y3m-5X-PZ7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

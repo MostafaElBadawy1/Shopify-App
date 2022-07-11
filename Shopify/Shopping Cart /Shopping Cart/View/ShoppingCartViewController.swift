@@ -23,9 +23,13 @@ class ShoppingCartViewController: UIViewController {
     var cart = [CartItem]()
     var newCart = [CartItem]()
     
+ first
     var productCosts = [Double]()
     var counters = [Int]()
     
+=======
+    var total = [Double]()
+ development
     
     var totalprize : Double = 0.0
     
@@ -34,6 +38,10 @@ class ShoppingCartViewController: UIViewController {
 
        
         calculateTotal()
+ first
+=======
+        
+ development
         myTableView.reloadData()
         
 
@@ -54,8 +62,11 @@ class ShoppingCartViewController: UIViewController {
         
         for item in cart {
             newCart.append(item)
+ first
             productCosts.append(item.price)
             counters.append(1)
+=======
+ development
             calculateTotal()
         }
         totalCost.text = "\(totalprize)"
@@ -70,6 +81,7 @@ class ShoppingCartViewController: UIViewController {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "chooseaddress") as! ChooseAddressViewController
             vc.customerID = customerID
+ first
             vc.totalCost = totalprize
             
             if (newCart.count != 1 ){
@@ -90,12 +102,27 @@ class ShoppingCartViewController: UIViewController {
         
             present(vc, animated: true, completion: nil)
             
+=======
+            for item in newCart {
+                vc.cart.append(item)
+                
+            }
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+            
+            
+ development
         }else {
             // go to sign up to add user
             
         }
         
+ first
     
+=======
+      
+        
+ development
     }
     
 }
@@ -137,12 +164,13 @@ extension ShoppingCartViewController : UITableViewDelegate {
 
 extension ShoppingCartViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cart.count
+        return newCart.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingcart", for: indexPath) as! ShoppingCartTableViewCell
      
+ first
         cell.brandName.text = cart[indexPath.row].productTitle
         cell.brandCost.text = "\(cart[indexPath.row].price)"
         cell.product = cart[indexPath.row]
@@ -153,6 +181,17 @@ extension ShoppingCartViewController : UITableViewDataSource {
         cell.increaseOut.tag = indexPath.row
         cell.increaseOut.addTarget(self, action: #selector(increaseProduc(sender:)), for: .touchUpInside)
         
+=======
+        cell.brandName.text = newCart[indexPath.row].productTitle
+         cell.product = cart[indexPath.row]
+        cell.product2 = newCart[indexPath.row]
+            cell.brandCost.text = "\(cell.product.price)"
+         cell.productIndex = indexPath.row
+         cell.cartSelectionDelegate = self
+      //  cell.brandCost.text = "\(newCart[indexPath.row].price)"
+        
+        cell.countOfArray = newCart.count
+ development
          
         return cell
         
@@ -216,10 +255,15 @@ extension ShoppingCartViewController : DeletionDelegate {
      func calculateTotal()
          {
              var totalValue = 0.0
+ first
              
              for i in productCosts {
                  totalValue += i
                  print("totalValue\(totalValue)")
+=======
+             for objProduct in newCart {
+                 totalValue += objProduct.price
+ development
              }
             
              totalprize = totalValue
@@ -228,6 +272,25 @@ extension ShoppingCartViewController : DeletionDelegate {
 }
 
 
+ first
+=======
+}
+
+
+// MARK: - Func Add product to new cart
+
+
+extension ShoppingCartViewController : CartSelection {
+
+func addProductTonewCart(product: CartItem, atIndex: Int) {
+    //newCart[atIndex] = product
+    newCart.append(product)
+//        newCart[atIndex] = product
+    print("___________ new array _______")
+    print(newCart)
+            calculateTotal()
+}
+ development
 }
 
 
