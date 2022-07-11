@@ -21,7 +21,11 @@ class testViewController: UIViewController {
     
     @IBAction func addToCart(_ sender: Any) {
         
+ first
+        db.addCartItem(appDelegate: appDelegate, productId: 123545, productImg: "", productTitle: "product1", productType: "adidus", productPrice: 100 , numofitem: 1)
+=======
         db.addCartItem(appDelegate: appDelegate, productId: 123545, productImg: "", productTitle: "product1", productType: "adidus", productPrice: 100)
+ development
         
         
         

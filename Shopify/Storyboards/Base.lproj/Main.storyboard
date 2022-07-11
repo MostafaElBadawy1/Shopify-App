@@ -97,7 +97,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="r8d-Z8-Fso"/>
                                     <barButtonItem image="cart.fill" catalog="system" id="pxD-n0-kON">
                                         <connections>
-                                            <segue destination="dvA-94-SKw" kind="presentation" modalPresentationStyle="fullScreen" id="T5L-TL-zpd"/>
+                                            <segue destination="dvA-94-SKw" kind="popoverPresentation" popoverAnchorBarButtonItem="pxD-n0-kON" id="T5L-TL-zpd">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem image="heart.fill" catalog="system" id="Lxh-tq-XzZ"/>
